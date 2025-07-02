@@ -17,6 +17,10 @@ ${description}
 ---
 Only return valid Mermaid code. Do not include any explanation or extra text.
 There should be no square brackets or parentheses. If present, change the logic and rewrite it without them.
+try to make it large and the info should have multiple sub boxes and link between them
+also return 1 more short flowchart code summarising the previous bigger flowchart
+the first block having name of the project points to these 2 flowcharts
+the bigger one should be in detailed explaning everything
 `;
 
     try {

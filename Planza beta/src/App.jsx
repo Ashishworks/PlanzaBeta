@@ -7,7 +7,7 @@ function App() {
   const [mermaidCode, setMermaidCode] = useState("");
 
   const handleSubmit = async (description) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}`, { //"http://localhost:5000/api/generate-mermaid"
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}`, { 
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ description }),
