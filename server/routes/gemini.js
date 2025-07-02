@@ -15,13 +15,12 @@ Convert the following project description into a Mermaid flowchart:
 ---
 ${description}
 ---
-Make it as descriptive and large as you can, with as many details as possible.
 Only return valid Mermaid code. Do not include any explanation or extra text.
-Do not include any explanation or extra text. just the mermaid code
+and there should be no square brackets that parnethesis in the code if present change the logic and make it without parenthesis
 `;
 
     try {
-        const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro-vision" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const rawText = response.text();

@@ -18,9 +18,7 @@ const FlowchartPreview = ({ mermaidCode }) => {
     const renderMermaid = async () => {
       try {
         chartRef.current.innerHTML = ""; // Clear previous chart
-
-        // Wait for DOM readiness
-        await new Promise((resolve) => setTimeout(resolve, 50));
+        await new Promise((resolve) => setTimeout(resolve, 50)); // Wait for DOM
 
         if (isCancelled) return;
 
@@ -47,16 +45,24 @@ const FlowchartPreview = ({ mermaidCode }) => {
     const chart = chartRef.current;
     if (!chart) return;
 
-    const canvas = await html2canvas(chart);
+    const scaleFactor = 3; // Higher value = clearer image
+    const canvas = await html2canvas(chart, {
+      scale: scaleFactor,
+      useCORS: true,
+    });
+
     const imgData = canvas.toDataURL("image/png");
+    const width = canvas.width;
+    const height = canvas.height;
 
     if (exportType === "pdf") {
       const pdf = new jsPDF({
-        orientation: "landscape",
+        orientation: width > height ? "landscape" : "portrait",
         unit: "px",
-        format: [canvas.width, canvas.height],
+        format: [width, height],
       });
-      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+
+      pdf.addImage(imgData, "PNG", 0, 0, width, height);
       pdf.save("flowchart.pdf");
     } else {
       const link = document.createElement("a");
