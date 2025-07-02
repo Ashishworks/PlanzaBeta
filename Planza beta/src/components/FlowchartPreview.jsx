@@ -8,21 +8,39 @@ mermaid.initialize({ startOnLoad: false });
 const FlowchartPreview = ({ mermaidCode }) => {
   const chartRef = useRef(null);
   const [exportType, setExportType] = useState("pdf");
+  const chartIdRef = useRef(`chart-${Date.now()}`);
 
   useEffect(() => {
     if (!mermaidCode || !chartRef.current) return;
 
+    let isCancelled = false;
+
     const renderMermaid = async () => {
       try {
-        const { svg } = await mermaid.render("chart", mermaidCode);
-        chartRef.current.innerHTML = svg;
+        chartRef.current.innerHTML = ""; // Clear previous chart
+
+        // Wait for DOM readiness
+        await new Promise((resolve) => setTimeout(resolve, 50));
+
+        if (isCancelled) return;
+
+        const { svg } = await mermaid.render(chartIdRef.current, mermaidCode);
+        if (!isCancelled && chartRef.current) {
+          chartRef.current.innerHTML = svg;
+        }
       } catch (err) {
         console.error("⚠️ Mermaid render error:", err.message);
-        chartRef.current.innerHTML = `<p style="color:red">⚠️ Invalid Mermaid syntax</p>`;
+        if (chartRef.current) {
+          chartRef.current.innerHTML = `<p style="color:red">⚠️ Invalid Mermaid syntax</p>`;
+        }
       }
     };
 
     renderMermaid();
+
+    return () => {
+      isCancelled = true;
+    };
   }, [mermaidCode]);
 
   const handleExport = async () => {
@@ -54,14 +72,14 @@ const FlowchartPreview = ({ mermaidCode }) => {
 
       <div
         ref={chartRef}
-        className="bg-white p-4 rounded shadow overflow-auto border"
+        className="bg-white dark:bg-gray-900 p-4 rounded shadow overflow-auto border dark:border-gray-700"
       />
 
       <div className="flex items-center gap-3">
         <select
           value={exportType}
           onChange={(e) => setExportType(e.target.value)}
-          className="border rounded px-3 py-2 text-sm"
+          className="border rounded px-3 py-2 text-sm bg-white text-black dark:bg-gray-800 dark:text-white dark:border-gray-600"
         >
           <option value="pdf">📄 Export as PDF</option>
           <option value="png">🖼️ Export as PNG</option>

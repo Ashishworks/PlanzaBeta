@@ -34,17 +34,19 @@ ${workflow}
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-6 bg-white p-6 rounded-xl shadow-lg"
+      className="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
     >
-      <h2 className="text-2xl font-bold text-blue-700">
+      <h2 className="text-2xl font-bold text-blue-700 dark:text-blue-300">
         📝 Describe Your Project
       </h2>
 
       <div>
-        <label className="block mb-1 font-medium text-gray-700">Project Name</label>
+        <label className="block mb-1 font-medium text-gray-700 dark:text-gray-300">
+          Project Name
+        </label>
         <input
           type="text"
-          className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none"
           placeholder="e.g. Food Delivery App"
           value={projectName}
           onChange={(e) => setProjectName(e.target.value)}
@@ -52,21 +54,26 @@ ${workflow}
       </div>
 
       <div>
-        <label className="block mb-1 font-medium text-gray-700">Project Summary</label>
+        <label className="block mb-1 font-medium text-gray-700 dark:text-gray-300">
+          Project Summary*
+        </label>
         <textarea
           rows={3}
-          className="w-full border border-gray-300 rounded-lg p-2 resize-none focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg p-2 resize-none focus:ring-2 focus:ring-blue-500 outline-none "
           placeholder="What does your project do?"
           value={summary}
           onChange={(e) => setSummary(e.target.value)}
+          required
         />
       </div>
 
       <div>
-        <label className="block mb-1 font-medium text-gray-700">Key Features</label>
+        <label className="block mb-1 font-medium text-gray-700 dark:text-gray-300">
+          Key Features
+        </label>
         <textarea
           rows={3}
-          className="w-full border border-gray-300 rounded-lg p-2 resize-none focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg p-2 resize-none focus:ring-2 focus:ring-blue-500 outline-none"
           placeholder="List features, one per line"
           value={features}
           onChange={(e) => setFeatures(e.target.value)}
@@ -74,10 +81,12 @@ ${workflow}
       </div>
 
       <div>
-        <label className="block mb-1 font-medium text-gray-700">User Roles</label>
+        <label className="block mb-1 font-medium text-gray-700 dark:text-gray-300">
+          User Roles
+        </label>
         <input
           type="text"
-          className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg p-2 focus:ring-2 focus:ring-blue-500 outline-none"
           placeholder="e.g. User, Admin, Delivery Partner"
           value={userRoles}
           onChange={(e) => setUserRoles(e.target.value)}
@@ -85,10 +94,12 @@ ${workflow}
       </div>
 
       <div>
-        <label className="block mb-1 font-medium text-gray-700">Workflow</label>
+        <label className="block mb-1 font-medium text-gray-700 dark:text-gray-300">
+          Workflow
+        </label>
         <textarea
           rows={4}
-          className="w-full border border-gray-300 rounded-lg p-2 resize-none focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg p-2 resize-none focus:ring-2 focus:ring-blue-500 outline-none"
           placeholder="Describe how the app works step by step"
           value={workflow}
           onChange={(e) => setWorkflow(e.target.value)}

@@ -1,32 +1,32 @@
-// App.jsx
 import React, { useState } from "react";
-import axios from "axios";
 import ProjectForm from "./components/ProjectForm";
 import FlowchartPreview from "./components/FlowchartPreview";
+import ThemeToggle from "./components/ThemeToggle";
 
-const App = () => {
+function App() {
   const [mermaidCode, setMermaidCode] = useState("");
 
   const handleSubmit = async (description) => {
-    try {
-      const res = await axios.post("http://localhost:5000/api/generate-mermaid", {
-        description,
-      });
-      setMermaidCode(res.data.mermaidCode);
-    } catch (err) {
-      console.error("Error:", err.message);
-      alert("Failed to generate Mermaid code");
-    }
+    const res = await fetch("http://localhost:5000/api/generate-mermaid", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ description }),
+    });
+    const data = await res.json();
+    setMermaidCode(data.mermaidCode);
   };
 
   return (
-    
-    <div className="max-w-3xl mx-auto p-6 font-sans">
-      <h1 className="text-2xl font-bold mb-4">🚀 Planza – AI Flowchart Builder (Beta)</h1>
+    <div className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white p-6 space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold">🧠 Planza Beta</h1>
+        <ThemeToggle />
+      </div>
+
       <ProjectForm onSubmit={handleSubmit} />
       {mermaidCode && <FlowchartPreview mermaidCode={mermaidCode} />}
     </div>
   );
-};
+}
 
 export default App;
