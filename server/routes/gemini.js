@@ -15,6 +15,7 @@ Convert the following project description into a Mermaid flowchart:
 ---
 ${description}
 ---
+Make it as descriptive and large as you can, with as many details as possible.
 Only return valid Mermaid code. Do not include any explanation or extra text.
 `;
 
