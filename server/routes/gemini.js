@@ -17,10 +17,11 @@ ${description}
 ---
 Make it as descriptive and large as you can, with as many details as possible.
 Only return valid Mermaid code. Do not include any explanation or extra text.
+Do not include any explanation or extra text. just the mermaid code
 `;
 
     try {
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro-vision" });
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const rawText = response.text();
