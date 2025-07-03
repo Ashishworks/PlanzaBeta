@@ -16,6 +16,7 @@ function App() {
     setMermaidCode(data.mermaidCode);
   };
 
+  
   return (
     <div className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white p-6 space-y-6">
       <div className="flex justify-between items-center">
