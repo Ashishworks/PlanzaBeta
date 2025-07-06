@@ -1,0 +1,44 @@
+planza/
+├── client/                # React frontend
+├── server/                # Node.js + Express backend
+├── .env                   # Shared environment variables (if needed)
+├── README.md
+
+
+client/
+├── public/
+│   └── index.html
+├── src/
+│   ├── assets/            # Images, videos, logos
+│   ├── components/        # Reusable UI components
+│   ├── pages/             # Pages (Dashboard, ProjectView, etc.)
+│   ├── layouts/           # Layout components (Navbar, Footer)
+│   ├── api/               # Axios or fetch wrappers
+│   ├── utils/             # Helper functions
+│   ├── hooks/             # Custom React hooks
+│   ├── styles/            # Tailwind + custom styles
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
+└── package.json
+
+
+pages/
+├── Dashboard.jsx
+├── ProjectDetails.jsx
+├── FlowchartView.jsx
+├── CreateProject.jsx
+
+
+server/
+├── controllers/           # Business logic (e.g., flowchartController)
+├── routes/                # Express routes
+├── models/                # Mongoose models (Project.js, User.js)
+├── langchain/             # LangChain.js logic (if used)
+├── utils/                 # Helpers (e.g., Mermaid generator, validators)
+├── config/                # DB config, middleware setup
+├── app.js                 # Main Express app
+├── server.js              # Entry point
+├── .env
+└── package.json
+
