@@ -105,7 +105,7 @@ const FlowchartPreview = ({ mermaidCode }) => {
           </svg>
           Flowchart Preview
         </h3>
-        <p className="text-green-100 text-sm mt-1">Your AI-generated project flowchart</p>
+        <p className="text-green-100 text-sm mt-1">Your AI-generated project flowchart, Not satisfied? Regenerate!</p>
       </div>
 
       {/* Chart Container */}
